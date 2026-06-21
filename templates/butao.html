@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escolha de Acesso</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: rgba(15, 23, 42, 0.96);
+      --line: #334155;
+      --text: #e5eefb;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, #1e293b 0%, #0f172a 45%, #020617 100%);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.98));
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+      text-align: center;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #bae6fd;
+      font-size: 0.92rem;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 1.9rem;
+      text-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn {
+      width: 100%;
+      height: 48px;
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.12s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); opacity: 0.95; }
+
+    .btn-login {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 18px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn-register {
+      background: linear-gradient(135deg, #475569, #64748b);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <span class="pill">Bah meu tu escolha ae</span>
+    <h1>dar de ladinho ou Sentar no cano?</h1>
+    <p>Você pode entrar na sua conta ou criar uma nova conta agora.</p>
+
+    <div class="options">
+      <button onclick="window.location.href='/login'" class="btn btn-login" type="button">Fazer login</button>
+      <button onclick="window.location.href='/cadastrar'" class="btn btn-register" type="button">Cadastrar-se</button>
+    </div>
+  </main>
+</body>
+</html>

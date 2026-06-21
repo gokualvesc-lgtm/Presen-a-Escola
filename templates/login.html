@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: rgba(15, 23, 42, 0.92);
+            --line: #334155;
+            --text: #e5eefb;
+            --muted: #cbd5e1;
+            --accent: #38bdf8;
+            --accent-2: #818cf8;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top, #1e293b 0%, #0f172a 45%, #020617 100%);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        form {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        fieldset {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 24px;
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.98));
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+        }
+
+        legend {
+            color: #fff;
+            padding: 0 8px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 18px;
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            background: rgba(15, 23, 42, 0.9);
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 18px;
+        }
+
+        .btn {
+            width: 48%;
+            height: 45px;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.12s ease, opacity 0.2s ease;
+        }
+
+        .btn:hover { transform: translateY(-1px); opacity: 0.95; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 10px 18px rgba(56, 189, 248, 0.25);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #475569, #64748b);
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/login/submited" method="POST">
+        <h1>Login</h1>
+        <fieldset>
+            <legend>Inclua seus dados</legend>
+            <label for="email">Email:</label>
+            <input type="email" placeholder="Email@bom.com.br" id="email" name="email">
+            <label for="senha">Senha:</label>
+            <input type="password" placeholder="Digite sua senha" id="senha" required name="password">
+
+            <div class="actions">
+                <input class="btn btn-primary" type="submit" value="Enviar">
+                <input class="btn btn-secondary" type="button" value="Voltar" onclick="window.location.href='/'">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>

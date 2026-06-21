@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notas</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --line: #334155;
+      --text: #e5eefb;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+      --good: #22c55e;
+      --warn: #f59e0b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, #1e293b 0%, #0f172a 45%, #020617 100%);
+      color: var(--text);
+      padding: 24px;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #bae6fd;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #fff;
+      font-size: 1.9rem;
+      text-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
+    }
+
+    .sub {
+      color: var(--muted);
+      margin: 6px 0 0;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(15, 23, 42, 0.9);
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.98));
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: var(--text);
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    th {
+      background: rgba(15, 23, 42, 0.95);
+      color: #fff;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    td {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    tbody tr:hover {
+      background: rgba(30, 41, 59, 0.9);
+    }
+
+    .nota {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .status {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .status.good { background: rgba(34, 197, 94, 0.18); color: #bbf7d0; border: 1px solid rgba(34, 197, 94, 0.25); }
+    .status.warn { background: rgba(245, 158, 11, 0.18); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.25); }
+    .status.info { background: rgba(56, 189, 248, 0.12); color: #bae6fd; border: 1px solid rgba(56, 189, 248, 0.25); }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mini {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.98));
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.35);
+    }
+
+    .mini span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .mini strong {
+      color: #fff;
+      font-size: 1.1rem;
+    }
+
+    .summary-table {
+      margin-top: 18px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="top">
+      <div>
+        <span class="pill">Notas do aluno</span>
+        <h1>Boletim escolar</h1>
+        <p class="sub">Confira seu desempenho por disciplina e veja a média geral.</p>
+      </div>
+      <div class="chip">Média geral:</div>
+    </section>
+
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Matéria</th>
+            <th>1º Bimestre</th>
+            <th>2º Bimestre</th>
+            <th>3º Bimestre</th>
+            <th>4º Bimestre</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        {% for nota in notas %}
+        <tbody>
+          <tr>
+            <td>Matemática</td>
+            <td class="nota">{{ nota[2] }}</td>
+            <td class="nota">--</td>
+            <td class="nota">--</td>
+            <td class="nota">--</td>
+            <td><span class="status good">Em branco</span></td>
+          </tr>
+          <tr>
+            <td>Ciências</td>
+            <td class="nota">{{ nota[3] }}</td>
+            <td class="nota">--</td>
+            <td class="nota">--</td>
+            <td class="nota">--</td>
+            <td><span class="status warn">Em branco</span></td>
+          </tr>
+          <tr>
+            <td>Artes</td>
+            <td class="nota">{{ nota[6] }}</td>
+            <td class="nota">--</td>
+            <td class="nota">--</td>
+            <td class="nota">--</td>
+            <td><span class="status info">Em branco</span></td>
+          </tr>
+          <tr>
+            <td>Geografia</td>
+            <td class="nota">{{ nota[5] }}</td>
+            <td class="nota">--</td>
+            <td class="nota">--</td>
+            <td class="nota">--</td>
+            <td><span class="status good">Em branco</span></td>
+          </tr>
+          <tr>
+            <td>Português</td>
+            <td class="nota">{{ nota[4] }}</td>
+            <td class="nota">--</td>
+            <td class="nota">--</td>
+            <td class="nota">--</td>
+            <td><span class="status info">Em branco</span></td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="summary">
+      <article class="mini"><span>Disciplinas</span><strong>5</strong></article>
+      <article class="mini"><span>Faltas</span><strong>--</strong></article>
+      <article class="mini"><span>Progresso</span><strong>--</strong></article>
+    </section>
+
+    <section class="table-wrap summary-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Valor</th>
+            <th>Observação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Faltas</td>
+            <td class="nota">--</td>
+            <td>Preencher depois</td>
+          </tr>
+          <tr>
+            <td>Presença</td>
+            <td class="nota">--</td>
+            <td>Preencher depois</td>
+          </tr>
+          <tr>
+            <td>Média final</td>
+            <td class="nota">--</td>
+            <td>Preencher depois</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

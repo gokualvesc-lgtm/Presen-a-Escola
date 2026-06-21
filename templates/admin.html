@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <style>
+    :root{--bg:#071023;--card:#0f172a;--text:#e6eef8;--muted:#9fb0c8;--accent:#38bdf8}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#041026 0%,#071023 100%);color:var(--text);padding:28px}
+    .container{max-width:1100px;margin:0 auto}
+    .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .title{font-size:1.6rem;margin:0}
+    .sub{color:var(--muted)}
+    .card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);border-radius:12px;padding:18px}
+    .controls{display:flex;gap:10px}
+    .btn{background:linear-gradient(90deg,var(--accent),#7c3aed);border:none;color:#fff;padding:10px 14px;border-radius:8px;cursor:pointer}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:10px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left}
+    th{color:var(--muted);font-size:0.9rem}
+    .empty{color:var(--muted);padding:14px;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1 class="title">Dashboard do Administrador</h1>
+        <div class="sub">Olá, <strong>{{ username }}</strong></div>
+      </div>
+      <div class="controls">
+        <button class="btn" onclick="window.location.href='/admin/users'">Gerenciar usuários</button>
+        <button class="btn" onclick="window.location.href='/'">Sair</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-top:0">Notas dos alunos</h2>
+      {% if notas %}
+        <table>
+          <thead>
+            <tr>
+              <th>Aluno</th>
+              <th>Matemática</th>
+              <th>Ciências</th>
+              <th>Português</th>
+              <th>Artes</th>
+              <th>Geografia</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for nota in notas %}
+              <tr>
+                <td>{{ nota[1] }}</td>
+                <td>{{ nota[2] }}</td>
+                <td>{{ nota[3] }}</td>
+                <td>{{ nota[4] }}</td>
+                <td>{{ nota[5] }}</td>
+                <td>{{ nota[6] }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <div class="empty">Nenhuma nota encontrada.</div>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
